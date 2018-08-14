@@ -180,7 +180,6 @@ if ( ! class_exists( 'Tribe__Extension__Settings_Helper' ) ) {
 			return $fields;
 		}
 
-
 		/**
 		 * Builds a button/link to add to the setting page, mimicing those in The Events Calendar
 		 *
