@@ -1,22 +1,19 @@
-=== [Extension Name] ===
+=== Tribe Extension: Dequeue Assets ===
 Contributors: ModernTribe
 Donate link: http://m.tri.be/29
 Tags: events, calendar
 Requires at least: 4.5
-Tested up to: 4.9.4
-Requires PHP: 5.2.4
-Stable tag: 1.0.0
+Tested up to: 4.9.8
+Requires PHP: 5.6
+Stable tag: 1.0.4
 License: GPL version 3 or any later version
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Brief description of the extension.
+Dequeues any scripts or styles that are registered using the `tribe_asset()` function.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+Dequeues any scripts or styles that are registered using the `tribe_asset()` function. Adds a list of dequeueable assets to WP Admin > Events > Settings.
 
 == Installation ==
 
@@ -41,6 +38,26 @@ tends to be very limited.
 
 == Changelog ==
 
-= 1.0.0 =
+= [1.0.4] 2018-08 =
+
+* Fix - Updated to support the new way of loading assets, [as of the July 29, 2018, products updates](https://theeventscalendar.com/maintenance-release-for-the-week-29-july-2018/)
+* Fix - Strings are now translatable
+* Tweak - License changed from GPLv2+ to GPLv3+
+* Tweak - Plugin header added support for GitHub Updater
+
+= [1.0.3] =
+
+* Fix – Extension now conditionally requires the Settings_Helper.php file to prevent the "Cannot declare class Tribe__Extension__Settings_Helper because the name is already in use" error.
+
+= [1.0.2] =
+
+* Fix – An error that occurred upon first activating the extension.
+
+= [1.0.1] =
+
+* Fix – An error "Cannot redeclare class" that happened when multiple extensions were active.
+* Tweak – Moved `View_Helper` to the Extension namespace.
+
+= [1.0.0] =
 
 * Initial release
