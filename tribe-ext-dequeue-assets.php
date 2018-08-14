@@ -144,8 +144,8 @@ if (
 			$setting_helper = new Tribe__Extension__Settings_Helper();
 
 			$reset_dequeue_key = $this->reset_url_parameter_prefix . $this->dequeued_assets_key;
-			$reset_assets_key = $this->reset_url_parameter_prefix . $this->logged_assets_key;
-			$settings_url = Tribe__Settings::instance()->get_url();
+			$reset_assets_key  = $this->reset_url_parameter_prefix . $this->logged_assets_key;
+			$settings_url      = Tribe__Settings::instance()->get_url();
 
 			// Allow manual reset of dequeued and logged assets, in case admin JavaScript is broken.
 			if ( ! empty( $_GET[ $reset_dequeue_key ] ) && wp_verify_nonce( $_GET[ $reset_dequeue_key ], $reset_dequeue_key ) ) {
@@ -156,42 +156,42 @@ if (
 			}
 
 			$fields = array(
-				'labels_heading' => array(
+				'labels_heading'                    => array(
 					'type' => 'html',
 					'html' => '<h3>' . esc_html__( 'Dequeued Assets', 'tribe-ext-dequeue-assets' ) . '</h3>',
 				),
-				'labels_helper_text' => array(
+				'labels_helper_text'                => array(
 					'type' => 'html',
 					'html' => '<p>' . esc_html__( 'Select any scripts or styles that you do not want loaded. In order for a script or style to appear in these lists you must first visit the page where it is loaded.', 'tribe-ext-dequeue-assets' ) . '</p>',
 				),
 				$this->dequeued_assets_key . '_css' => array(
-					'type' => 'checkbox_list',
-					'label' => esc_html__( 'Dequeued Styles', 'the-events-calendar' ),
-					'tooltip' => esc_html__( 'Select any CSS styles that you do not want loaded on your site.', 'tribe-ext-dequeue-assets' ),
-					'default' => array(),
-					'options' => Tribe__Utils__Array::get( $this->logged_assets, 'css', array() ),
+					'type'            => 'checkbox_list',
+					'label'           => esc_html__( 'Dequeued Styles', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Select any CSS styles that you do not want loaded on your site.', 'tribe-ext-dequeue-assets' ),
+					'default'         => array(),
+					'options'         => Tribe__Utils__Array::get( $this->logged_assets, 'css', array() ),
 					// No validation is less than ideal, but it's the only way to allow no options selected to be saved.
 					'validation_type' => 'none',
 				),
-				$this->dequeued_assets_key . '_js' => array(
-					'type' => 'checkbox_list',
-					'label' => esc_html__( 'Dequeued Scripts', 'the-events-calendar' ),
-					'tooltip' => esc_html__( 'Select any JavaScript files that you do not want loaded on your site. Please note, dequeuing any of these is likely to break something unless you replace its functionality with a different script.', 'tribe-ext-dequeue-assets' ),
-					'default' => array(),
-					'options' => Tribe__Utils__Array::get( $this->logged_assets, 'js', array() ),
+				$this->dequeued_assets_key . '_js'  => array(
+					'type'            => 'checkbox_list',
+					'label'           => esc_html__( 'Dequeued Scripts', 'the-events-calendar' ),
+					'tooltip'         => esc_html__( 'Select any JavaScript files that you do not want loaded on your site. Please note, dequeuing any of these is likely to break something unless you replace its functionality with a different script.', 'tribe-ext-dequeue-assets' ),
+					'default'         => array(),
+					'options'         => Tribe__Utils__Array::get( $this->logged_assets, 'js', array() ),
 					// No validation is less than ideal, but it's the only way to allow no options selected to be saved.
 					'validation_type' => 'none',
 				),
-				'reset_dequeue_lists' => array(
-					'type' => 'button_link',
-					'label' => esc_html__( 'Reset Dequeue List', 'tribe-ext-dequeue-assets' ),
-					'url' => wp_nonce_url( $settings_url, $reset_dequeue_key, $reset_dequeue_key ),
+				'reset_dequeue_lists'               => array(
+					'type'    => 'button_link',
+					'label'   => esc_html__( 'Reset Dequeue List', 'tribe-ext-dequeue-assets' ),
+					'url'     => wp_nonce_url( $settings_url, $reset_dequeue_key, $reset_dequeue_key ),
 					'tooltip' => 'Use this if your site stops working properly after dequeueing scripts.',
 				),
-				'reset_dequeue_logged_assets' => array(
-					'type' => 'button_link',
-					'label' => esc_html__( 'Reset List of Assets', 'tribe-ext-dequeue-assets' ),
-					'url' => wp_nonce_url( $settings_url, $reset_assets_key, $reset_assets_key ),
+				'reset_dequeue_logged_assets'       => array(
+					'type'    => 'button_link',
+					'label'   => esc_html__( 'Reset List of Assets', 'tribe-ext-dequeue-assets' ),
+					'url'     => wp_nonce_url( $settings_url, $reset_assets_key, $reset_assets_key ),
 					'tooltip' => 'Resets the list of options available in the above dequeue lists. You can add items back to the list by visiting any page which loads the relevant script.',
 				),
 			);
@@ -225,7 +225,7 @@ if (
 		 * @param $asset string Name of the asset
 		 */
 		public function log_asset( $asset ) {
-			$keys = array( $asset->type, $asset->slug );
+			$keys  = array( $asset->type, $asset->slug );
 			$isset = Tribe__Utils__Array::get( $this->logged_assets, $keys, false );
 
 			if ( ! $isset ) {
