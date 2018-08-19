@@ -118,9 +118,10 @@ if (
 			// Cast this to an array. Due to a bug in v1.0.1 this might have been saved as an empty string.
 			$this->logged_assets = (array) tribe_get_option( $this->logged_assets_key, array() );
 
+			// Cast these also in case an empty string is being returned. 
 			$this->dequeued_assets = array_merge(
-				tribe_get_option( $this->dequeued_assets_key . '_css', array() ),
-				tribe_get_option( $this->dequeued_assets_key . '_js', array() )
+				(array) tribe_get_option( $this->dequeued_assets_key . '_css', array() ),
+				(array) tribe_get_option( $this->dequeued_assets_key . '_js', array() )
 			);
 
 			add_action( 'admin_init', array( $this, 'add_settings' ) );
